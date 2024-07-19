@@ -4,17 +4,17 @@ services:
     env: ruby
     plan: free
     buildCommand: "bundle install && rake db:migrate"
-    startCommand: "bundle exec rails server -p 3000"
+    startCommand: "bundle exec rails server -e production -p 3000"
     envVars:
       - key: DATABASE_NAME
-        value: task_manager_prodgit in
+        value: task_manager_dev
       - key: DATABASE_USERNAME
         value: task_manager
       - key: DATABASE_PASSWORD
-        value: your_secure_password
+        value: P@ssword123
       - key: DATABASE_HOST
-        value: your_database_host
+        value: localhost
       - key: DATABASE_PORT
         value: 5432
       - key: RAILS_MASTER_KEY
-        value: your_master_key
+        value: 087463834be03b114d8f613bab5ea205

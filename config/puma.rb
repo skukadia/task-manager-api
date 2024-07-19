@@ -15,7 +15,8 @@ threads min_threads_count, max_threads_count
 if ENV["RAILS_ENV"] == "production"
   require "concurrent-ruby"
   worker_count = Integer(ENV.fetch("WEB_CONCURRENCY") { Concurrent.physical_processor_count })
-  workers worker_count if worker_count > 1
+  # Only set workers if the platform supports it
+  workers worker_count if worker_count > 1 && RUBY_PLATFORM !~ /mswin|mingw|cygwin/
 end
 
 # Specifies the `worker_timeout` threshold that Puma will use to wait before
