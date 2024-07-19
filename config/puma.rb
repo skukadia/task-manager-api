@@ -32,5 +32,17 @@ environment ENV.fetch("RAILS_ENV") { "development" }
 # Specifies the `pidfile` that Puma will use.
 pidfile ENV.fetch("PIDFILE") { "tmp/pids/server.pid" }
 
+# Binding for non-SSL connection
+if ENV['RAILS_ENV'] == 'production'
+  # Uncomment and set up the SSL configuration if you have SSL certificates
+  # ssl_bind '0.0.0.0', '3000', {
+  #   key: ENV.fetch('SSL_KEY_PATH'),
+  #   cert: ENV.fetch('SSL_CERT_PATH'),
+  #   verify_mode: 'none'
+  # }
+else
+  bind "tcp://0.0.0.0:3000"
+end
+
 # Allow puma to be restarted by `bin/rails restart` command.
 plugin :tmp_restart
