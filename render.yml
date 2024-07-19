@@ -7,7 +7,7 @@ services:
     startCommand: "bundle exec rails server -p 3000"
     envVars:
       - key: DATABASE_NAME
-        value: task_manager_prod
+        value: task_manager_prodgit in
       - key: DATABASE_USERNAME
         value: task_manager
       - key: DATABASE_PASSWORD
