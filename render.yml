@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: task-manager-api
+    env: ruby
+    plan: free
+    buildCommand: "bundle install && rake db:migrate"
+    startCommand: "bundle exec rails server -p 3000"
+    envVars:
+      - key: DATABASE_NAME
+        value: task_manager_prod
+      - key: DATABASE_USERNAME
+        value: task_manager
+      - key: DATABASE_PASSWORD
+        value: your_secure_password
+      - key: DATABASE_HOST
+        value: your_database_host
+      - key: DATABASE_PORT
+        value: 5432
+      - key: RAILS_MASTER_KEY
+        value: your_master_key
